@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>HTML CSS Review</title>
+
+    <style>
+      .yellow-button {
+        background-color: blueviolet;
+        color: red;
+        border: none;
+      }
+
+      .red-button {
+        background-color: red;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick = "
+      let computerMove = selectComputerMove();
+      let finalResult = '';
+
+      if (computerMove == 'ROCK') finalResult = 'TIE';
+      else if (computerMove == 'PAPER') finalResult = 'YOU LOSE';
+      else finalResult = 'YOU WIN';
+      
+      alert(`You have selected ROCK. Computer has selected ${computerMove}.\n${finalResult}`);"
+      >
+      ROCK
+    </button>
+
+    <button onclick = "
+      let computerMove = selectComputerMove();
+      let finalResult = '';
+
+      if (computerMove == 'ROCK') finalResult = 'YOU WIN';
+      else if (computerMove == 'PAPER') finalResult = 'TIE';
+      else finalResult = 'YOU LOSE';
+
+      alert(`You have selected PAPER. Computer has selected ${computerMove}.\n${finalResult}`);
+    ">
+      PAPER
+    </button>
+
+    <button onclick = {scissor()} >
+      SCISSOR
+    </button>
+
+    <button id = 'btn'>
+      Score
+    </button>
+    
+    <p>
+      Your current score : 
+    </p>
+
+    <script>
+      let myScore=0;
+      function scissor(){
+        let computerMove = selectComputerMove();
+      let finalResult = '';
+
+      if (computerMove == 'ROCK') {finalResult = 'YOU LOSE' ; myScore--;}
+      else if (computerMove == 'PAPER'){ finalResult = 'YOU WIN' ; myScore++;}
+      else finalResult = 'TIE';
+      
+      alert(`You have selected SCISSOR. Computer has selected ${computerMove}.\n${finalResult}`);
+      }
+
+      let btn = document.getElementById('btn');
+
+      btn.innerText = myScore;
+
+      function selectComputerMove(){
+        let randomVal = Math.random();
+        let computerMove = '';
+
+        if (randomVal < 1 / 3) computerMove = 'ROCK';
+        else if (randomVal >= 1 / 3 && randomVal < 2 / 3) computerMove = 'PAPER';
+        else computerMove = 'SCISSOR';
+
+        return computerMove;
+      }
+    </script>
+  </body>
+</html>
